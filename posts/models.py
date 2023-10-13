@@ -3,20 +3,22 @@ from taggit.managers import TaggableManager
 from django.contrib.auth.models import User
 
 
-""" 
+''' 
     - title
     - author
     - content   
     - image
     - publish date
     - tags
-"""
+'''
 
+   
 '''
     - fields
     - html widget
     - validation
 '''
+    
 
 
 class Post(models.Model):
@@ -25,7 +27,7 @@ class Post(models.Model):
     content = models.TextField(max_length=50000)
     publish_date = models.DateTimeField()
     tags = TaggableManager()
-    image = models.ImageField(upload_to='Posts')
+    image = models.ImageField(upload_to='posts')
 
 
     def __str__(self):
