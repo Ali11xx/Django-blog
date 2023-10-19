@@ -18,17 +18,19 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from posts.views import post_list , post_detail
-from posts.views2 import PostList , PostDetail 
+from posts.views import post_list , post_detail , add_post , edit_post 
+from posts.views2 import PostList , PostDetail , AddPost , EditPost , DeletePost
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', PostList.as_view()) ,
-    path('blog/add' , add_post) ,
-    path('blog/<int:pk' , PostDetail.as_view()) , 
+    path('blog/', add_post) ,
+    path('blog/add' , AddPost.as_view()) ,
     path('blog/<int:post_id>/edit' , edit_post) ,
-    path('blog/<int:post_id>/delete' , post_delete),
+    path('blog/<int:pk>' , PostDetail.as_view()) , 
+    path('blog/<int:pk>/edit' , EditPost.as_view()) ,
+    path('blog/<int:pk>/delete' , DeletePost.as_view()),
 ]         
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
